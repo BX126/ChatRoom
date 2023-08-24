@@ -1,78 +1,55 @@
-# ChatRoom 聊天室 
+# ChatRoom
 
-> 使用Java编写的有屏蔽指定信息功能的local host简易聊天室
+> A simple localhost chatroom written in Java with the ability to filter specific information.
 
-![License](https://img.shields.io/badge/license-MIT-green.svg)
+This project is a simple chatroom written based on the Java Networking Class (Socket/ServerSocket) I/O, dynamic storage, and multi-threading.
 
-本项目是基于Java Networking Class(Socket/ServerSocket) I/O，动态储存，以及多线程编写的简单聊天室
+## Getting Started Guide
 
-## 内容列表
+First, please run `ChatServer.java`. You have two ways to set up the chatroom:
 
-- [Getting Started 使用指南](#GettingStarted使用指南)
+1. Use the default port number:
+   
+   The default port number is 1500 (you can modify the default port number in the main class of `ChatServer.java`).
 
-- [Release History 版本历史](#ReleaseHistory版本历史)
+   ```
+   > java ChatServer
+   ```
 
-- [Author 关于作者](#Author关于作者)
+2. Choose your own port number:
 
-- [License 授权协议](#License授权协议)
+   If you want a different port number, enter your port number as a compilation argument (replace portNumber with your desired port number).
 
+   ```
+   > java ChatServer portNumber
+   ```
 
-## GettingStarted使用指南
+At this point, the chatroom has been set up. You can add users to the chatroom by running `ChatClient.java`. You have four ways to add users:
 
-首先请运行 ChatServer.java，您有以下两种方式建立聊天室：
+1. If you want to join the default port number chatroom anonymously:
 
-1. 使用默认port number
+   ```
+   > java ChatClient
+   ```
 
-port number 默认为1500（可于ChatServer.java中main class 修改默认portnumber）
+2. If you want to join the default port number chatroom with a nickname you input (replace username with your nickname):
 
-```
-> java ChatServer
-```
+   ```
+   > java ChatClient username
+   ```
 
-2. 自选 port number
+3. If you want to join a specific port number chatroom with a nickname you input (replace username with your nickname and portNumber with the port number of the chatroom you wish to join):
 
-若选择其他port number 请输入您的port number作为编译argument（更改portNUmber 为您的port number） 
+   ```
+   > java ChatClient username portNumber
+   ```
 
-```
-> java ChatServer portNumber
-```
+4. If you want to join a specific chatroom with a nickname you input (replace username with your nickname, portNumber with the port number of the chatroom you wish to join, and serverAddress with the server address):
 
-至此，聊天室已建立完成，可通过运行 ChatClient.java 添加用户至聊天室。
-您有以下四种方式添加用户：
+   ```
+   > java ChatClient username portNumber serverAddress
+   ```
 
-1. 若您希望以匿名者的身份加入默认portnumber聊天室：
-```
-> java ChatClient
-```
+Now, you can chat with other users in the chatroom!
 
-2. 若您希望以您输入的昵称（更改username为您的昵称）加入默认portnumber聊天室：
-```
-> java ChatClient username
-```
-
-3. 若您希望以您输入的昵称（更改username为您的昵称）加入指定portnumber聊天室（更改portnumber为您希望加入的聊天室的portnumber）：
-```
-> java ChatClient username portNumber
-```
-
-4. 若您希望以您输入的昵称（更改username为您的昵称）加入指定聊天室（更改portnumber以及serverAddress为您希望加入的聊天室的portnumber和serveraddress）：
-```
-> java ChatClient username portNumber serverAddress
-```
-
-现在您可以在聊天室与其他用户对话了！
-
-此聊天室还会屏蔽指定信息，若用户发出此信息，server会自动使用“*”代替该信息；
-您可以在 [badwords.txt](ChatRoom/badwords.txt) 添加/删除需要屏蔽的信息。
-
-## ReleaseHistory版本历史
-
-* 0.1.0
-
-## Author关于作者
-
-* **BX** - *Initial work* - [BX](https://github.com/BX126)
-
-## License授权协议
-
-[MIT LICENSE](LICENSE) @ BX
+This chatroom also filters specific information. If a user sends this information, the server will automatically replace it with "*". You can add or remove the information you want to filter in [badwords.txt](ChatRoom/badwords.txt).
